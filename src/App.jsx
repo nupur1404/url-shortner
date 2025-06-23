@@ -1,5 +1,10 @@
-import { createBrowserRouter } from "react-router-dom"
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import AppLayout from "./layouts/app-layout"
+import LandingPage from "./pages/landing"
+import Dashboard from "./pages/Dashboard"
+import Auth from "./pages/Auth"
+import Link from "./pages/Link"
+import RedirectLink from "./pages/redirect-link"
 
 const router = createBrowserRouter([
   {
@@ -7,17 +12,31 @@ const router = createBrowserRouter([
     children:[
       {
         path: '/',
-        element: <LandingPage />
-      }
+        element: <LandingPage />,
+      },
+      {
+        path: '/dashboard',
+        element: <Dashboard />,
+      },
+      {
+        path: '/auth',
+        element: <Auth />,
+      },
+      {
+        path: '/link/:id',
+        element: <Link />,
+      },
+      {
+        path: '/:id',
+        element: <RedirectLink />,
+      },
     ]
   }
 ])
 
 function App() {
   return (
-    <div>
-      hii
-    </div>
+    <RouterProvider router={router} />
   )
 }
 
