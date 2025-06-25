@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {Input} from "../components/ui/input" ;
 import { Button } from '../components/ui/button';
 import {
@@ -7,19 +7,34 @@ import {
     AccordionItem,
     AccordionTrigger,
   } from "../components/ui/accordion" ;
+import { useNavigate } from 'react-router-dom';
 
 const LandingPage = () => {
+
+    const [longUrl , setLongUrl] = useState() ;
+    const navigate = useNavigate() ;
+
+    const handleShorten = (e)=>{
+        e.preventDefault() 
+        if(longUrl) navigate(`/auth?createNew=${longUrl}`)
+    }
+
   return (
     <div className="flex flex-col items-center">
       <h2 className="my-10 sm:my-16 text-3xl sm:text-6xl lg:text-7xl text-white text-center font-extrabold ml-10"> 
         The only URL Shortner <br/> you'll ever need!👇🏻
       </h2>
-      <form className="sm:h-14 flex flex-col sm:flex-row w-full md:w-2/4 gap-2" >
-        <Input type="url" placeholder="Enter your long URL"
-            // onChange={}
+      <form onSubmit={handleShorten} className="sm:h-14 flex flex-col sm:flex-row w-full md:w-2/4 gap-2" >
+        <Input 
+            type="url" 
+            value = {longUrl}
+            placeholder="Enter your long URL"
+            onChange={(e)=> setLongUrl(e.target.value)}
             className="h-full flex-1 py-4 px-4"
         />
-        <Button type="submit" className="h-full" variant="destructive"> Shorten </Button>
+        <Button 
+
+        type="submit" className="h-full" variant="destructive"> Shorten </Button>
       </form>
       <img src="public/banner.jpg" alt="Banner image" className="w-full my-11 md:px-11  "></img>
 
