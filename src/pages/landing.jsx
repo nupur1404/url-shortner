@@ -36,7 +36,7 @@ const LandingPage = () => {
 
         type="submit" className="h-full" variant="destructive"> Shorten </Button>
       </form>
-      <img src="public/banner.jpg" alt="Banner image" className="w-full my-11 md:px-11  "></img>
+      <img src="/url.jpg" alt="Banner image" className="w-full my-11 md:px-11  "></img>
 
       <Accordion type="multiple" collapsible className="w-full md:px-11">
         <AccordionItem value="item-1">
